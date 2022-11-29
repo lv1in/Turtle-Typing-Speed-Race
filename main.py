@@ -15,9 +15,10 @@ sentence = 'the quick brown fox jumps over the little lazy dog.'
 num = int(input('Amount of player: '))
 for i in range(num):
     name = input(f'Player{i+1} Name: ')
+    PlayerName.append(name)
     color = input(f'Player{i+1} Color: ')
     TurtlePlayer(name, color, db)
-
+    
 for py in PlayerName:
     wpm = 0
     wpm = typ.WPM(sentence)
