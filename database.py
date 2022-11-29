@@ -43,4 +43,16 @@ class DataBase:
                 data_dict[name]['speed'] =  speed
                 with open('players.json', 'w') as data_file:
                     json.dump(data_dict, data_file, indent=4)
+
+    def da(self):
+        try:
+            with open('players.json', 'r') as data_file:
+                data_dict = json.load(data_file)
+        except FileNotFoundError:
+            print('No data file found')
+        else:
+            return data_dict
+
+
+
                             

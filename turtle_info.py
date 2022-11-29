@@ -1,3 +1,5 @@
+import turtle
+
 class TurtlePlayer:
 
     def __init__(self, name: str, turtle_color: str, db):
@@ -28,11 +30,32 @@ class TurtlePlayer:
     def turtle_racetrack(self):
         pass
 
-    def turtle_speed(self, list_speed, name):
-        self.db.set_speed(list_speed, name)
+
 
     def turtle_win(self):
+
         pass
+
+    def turtle_detail(self):
+        py = turtle.Turtle()
+        dict_player = self.db.data()
+        for name in dict_player:
+            py.color(dict_player[name]['color'])
+            py.speed(dict_player[name]['speed'])
+
+    def turtle_setup(self, name):
+        y = 150
+        for i in range(len(self.db.data())):
+            name.shapesize(1.5)
+            name.penup()
+            name.goto(-300, y)
+            name.pendown()
+            y -= 100
+
+
+
+
+
 
 
     
