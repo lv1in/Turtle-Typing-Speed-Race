@@ -46,14 +46,15 @@ class DataBase:
                 with open('players.json', 'w') as data_file:
                     json.dump(data_dict, data_file, indent=4)
                             
-    # def add_player(self, turtle_player):
-    #     try:
-    #         with open('players.json', 'r') as data_file:
-    #             data_dict = json.load(data_file)
-    #     except FileNotFoundError:
-    #         print('No data file found')
-    #     else:
-    #         data_dict[turtle_player.name] = {'color': turtle_player.turtle_color, 'speed': 0}
-    #         with open('players.json', 'w') as data_file:
-    #                     json.dump(data_dict, data_file, indent=4)
-    #                     print('ADDED Player')
+    def add_player(self, turtle_player):
+        try:
+            with open('players.json', 'r') as data_file:
+                data_dict = json.load(data_file)
+        except FileNotFoundError:
+            print('No data file found')
+        else:
+            data_dict[turtle_player.name] = {'color': turtle_player.turtle_color, 'speed': 0}
+            with open('players.json', 'w') as data_file:
+                        json.dump(data_dict, data_file, indent=4)
+                        print('ADDED Player')
+                        
