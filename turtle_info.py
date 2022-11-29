@@ -1,11 +1,11 @@
-class Turtle:
+class TurtlePlayer:
 
-    def __init__(self, name: str, turtle_color: str, db, typ):
+    def __init__(self, name: str, turtle_color: str, db):
         self.name = name
         self.turtle_color = turtle_color
         self.db = db
-        self.typ = typ
         db.insert(self)
+        # self.typ = typ
         # typ.insert(self)
 
     @property
@@ -34,5 +34,5 @@ class Turtle:
     def turtle_win(self):
         pass
 
-    pass
+
     

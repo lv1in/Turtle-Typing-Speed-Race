@@ -1,1 +1,0 @@
-# Turtle-Typing-Speed-Race

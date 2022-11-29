@@ -21,7 +21,6 @@ class DataBase:
             with open('players.json', 'w') as data_file:
                 json.dump(data, data_file, indent=4) 
 
-                
     def info_reset(self):
         try:
             with open('players.json', 'r') as data_file:
@@ -33,7 +32,6 @@ class DataBase:
             with open('players.json', 'w') as data_file:
                 json.dump(data_dict, data_file, indent=4)
                 print('Exiting.......')
-
 
     def set_speed(self, speed, name):
             try:
@@ -57,4 +55,3 @@ class DataBase:
             with open('players.json', 'w') as data_file:
                         json.dump(data_dict, data_file, indent=4)
                         print('ADDED Player')
-                        
