@@ -2,14 +2,16 @@ from turtle import *
 import turtle
 import time
 from turtle_info import TurtlePlayer
+
 import os
 
-class Display(TurtlePlayer):
+class Display():
 
     def __int__(self, db):
         self.db = db
         db.insert(self)
-        pass
+        self.dict_ = {}
+
 
     def intro(self):
         print("===========================================")
@@ -56,6 +58,7 @@ class Display(TurtlePlayer):
                         return lv
 
     def multiplayer(self):
+        os.system('clear')
         print("===========================================")
         print('           MODE MULTIPLAYER                ')
         print("===========================================")
@@ -77,6 +80,7 @@ class Display(TurtlePlayer):
                         else:
                             self.single_mode()
                     else:
+                        os.system('clear')
                         num = int(input('Enter num of Player: '))
 
                         return num
@@ -89,29 +93,20 @@ class Display(TurtlePlayer):
         elif lv == 3:
             pass
 
+    def multi(self):
+        os.system('clear')
+        name = input(f'Player Name: ')
+        color = input(f'Player Color: ')
 
-
-    def multi(self, num):
-        for i in range(num):
-            name = input(f'Player{i + 1} Name: ')
-            PlayerName.append(name)
-            color = input(f'Player{i + 1} Color: ')
-            TurtlePlayer(name, color, self.db)
+        return name, color
 
 
     def saving(self):
+
         pass
 
     def play_again(self):
         pass
-
-
-
-
-
-
-
-
 
 
     def turtle_display(self):
@@ -163,13 +158,13 @@ class Display(TurtlePlayer):
         turtle.exitonclick()
 
     def tutle_intrack(self, num, msg, speed):
-        super().turtle_track(msg)
-        super().turtle_setup(num)
-        super().turtle_timer(speed)
+        # super().turtle_track(msg)
+        # super().turtle_setup(num)
+        # super().turtle_timer(speed)
         # self.ttplayer.turtle_track(msg)
         # self.ttplayer.turtle_setup(num)
         # self.ttplayer.turtle_timer(speed)
-
+        pass
     # def turtle_setup(self, num):
     #     dict_ = self.db.data()
     #     if num == 1:
@@ -191,6 +186,6 @@ class Display(TurtlePlayer):
     #             self.turt.pendown()
     #             y -= 100
 
-    pass
+
 
 

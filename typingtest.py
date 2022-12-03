@@ -1,5 +1,5 @@
 import time 
-import turtle as t
+
 
 class Typing:
 
@@ -14,59 +14,61 @@ class Typing:
         self.correct_char = []
         self.total_char = 0
         self.wrong_char = 0
-
+        self.list_speed = []
+        self.acc = 0
 
     def WPM(self, sentence):
-
         word_of_st = sentence.split(' ')
-
+        self.correct_char = []
+        self.correct_word = []
         start_time = time.time()
         while True:
             print(sentence)
-            self.text = input().split(' ')
-            if len(self.text) == len(word_of_st) :
+            typing_text = input().split(' ')
+            if len(typing_text) == len(word_of_st):
                 break
-            
-        for counter, word in enumerate(self.text):
+        for counter, word in enumerate(typing_text):
             correctword = word_of_st[counter]
             if word == correctword:
-                self.words_typed += 1
                 self.correct_word.append(word)
             else:
                 self.wrong_words += 1
 
-            for i in range(len(self.text[counter])):
-                correctchar = word_of_st[counter][i]
-                if word[i] == correctchar:
+            for i in range(len(word_of_st[counter])):
+                if word_of_st[counter][i] == typing_text[counter][i]:
                     self.correct_char.append(word[i])
+
         end_time = time.time()
 
         self.elapsed_time = (end_time-start_time) / 60
-        self.total_char = sum(len(word) for word in self.text)
         self.chars_count = sum(len(word) for word in self.correct_word)
         self.words_count = self.chars_count / 5
-        self.wpm = round(self.words_count/ self.elapsed_time)
+        self.wpm = round(self.words_count / self.elapsed_time)
+
+        self.total_char = sum(len(word) for word in typing_text)
         self.acc = len(self.correct_char)/self.total_char
+
         print(f'WPM: {self.wpm}')
         print(f'ERROR: {self.wrong_words}')
-        print(f'ACC: {self.acc*100} %')
+        print(f'ACC: {self.acc*100:.2f} %')
 
         return self.wpm
 
-
-        
     @property
     def wpm(self):
         return self.__wpm
     
     @wpm.setter
-    def wpm(self, new):
-        self.__wpm = new
+    def wpm(self, new_):
+        self.__wpm = new_
     
     @property
     def words_typed(self):
         return self.__words_typed
     
     @words_typed.setter
-    def words_typed(self, new):
-        self.__words_typed = new
+    def words_typed(self, new_):
+        self.__words_typed = new_
+
+    def add_speed(self, speed):
+        self.list_speed.append(speed)

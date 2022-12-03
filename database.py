@@ -33,18 +33,18 @@ class DataBase:
                 json.dump(data_dict, data_file, indent=4)
                 print('Exiting.......')
 
-    def set_speed(self, speed, name):
+    def update_speed(self, speed, name):
             try:
                 with open('players.json', 'r') as data_file:
                     data_dict = json.load(data_file)
             except FileNotFoundError:
                 print('No data file found')
             else:
-                data_dict[name]['speed'] =  speed
+                data_dict[name]['speed'] = speed
                 with open('players.json', 'w') as data_file:
                     json.dump(data_dict, data_file, indent=4)
 
-    def da(self):
+    def data(self):
         try:
             with open('players.json', 'r') as data_file:
                 data_dict = json.load(data_file)
@@ -52,6 +52,7 @@ class DataBase:
             print('No data file found')
         else:
             return data_dict
+
 
 
 
