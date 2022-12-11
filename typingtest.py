@@ -1,74 +1,123 @@
-import time 
+import csv
+import random as r
+import time
 
 
 class Typing:
-
     def __init__(self):
-        self.words_typed = 0
         self.wrong_words = 0
-        self.words_count = 0
-        self.chars_count = 0
         self.elapsed_time = 0
         self.wpm = 0
         self.correct_word = []
         self.correct_char = []
-        self.total_char = 0
-        self.wrong_char = 0
         self.list_speed = []
         self.acc = 0
-
+            
     def WPM(self, sentence):
-        word_of_st = sentence.split(' ')
-        self.correct_char = []
-        self.correct_word = []
-        start_time = time.time()
-        while True:
-            print(sentence)
-            typing_text = input().split(' ')
-            if len(typing_text) == len(word_of_st):
-                break
-        for counter, word in enumerate(typing_text):
-            correctword = word_of_st[counter]
-            if word == correctword:
-                self.correct_word.append(word)
-            else:
+        '''This function will calculate the WPM of the user. 
+        It will also return the correct words and the correct characters. 
+        
+        Parameters
+        ----------
+        sentence : str
+            The sentence that the user will type.
+        ''' 
+
+        self.reset()
+        word_of_st = sentence.split(' ')# this will split the sentence into words
+        print(sentence)
+        start_time = time.time() # this will start the timer
+        typed_sentence = input().split(' ') # this will split the user input into words
+        end_time = time.time() # this will end the timer
+        dct = {}
+    
+        # this will check if the user typed the same amount of words as the sentence
+        if len(word_of_st) > len(typed_sentence): # if the user typed less words than the sentence
+            for i in range(len(word_of_st)):
+                try:
+                    dct[word_of_st[i]] = typed_sentence[i]
+                except:
+                    dct[word_of_st[i]] = 'err1' # this will be the error code
+        elif len(word_of_st) < len(typed_sentence): # if the user typed more words than the sentence
+            for i in range(len(typed_sentence)):
+                try:
+                    dct[word_of_st[i]] = typed_sentence[i]
+                except:
+                    dct[typed_sentence[i]] = typed_sentence[i]+'er1' # this will be the error code
+        else: # if the user typed the same amount of words as the sentence
+            for correctword, typedword in zip(word_of_st,typed_sentence):
+                # this will zip the words together and put it in a dictionary
+                dct[correctword] = typedword
+
+        # this will check if the user typed the correct words and characters
+        for correct, typed in dct.items():
+            if correct == typed: # if the user typed the correct word
+                self.correct_word.append(typed)
+            elif correct != typed: # if the user typed the wrong word
                 self.wrong_words += 1
+        
 
-            for i in range(len(word_of_st[counter])):
-                if word_of_st[counter][i] == typing_text[counter][i]:
-                    self.correct_char.append(word[i])
+            if len(typed) == len(correct): # if the user typed the same amount of characters as the sentence
+                for i in range(len(typed)):
+                    if typed[i] == correct[i]:
+                        self.correct_char.append(typed[i])
+            elif len(typed) > len(correct): # if the user typed more characters than the sentence
+                for i in range(len(typed)):
+                    try:
+                        if typed[i] == correct[i]:
+                            self.correct_char.append(typed[i])
+                    except IndexError: 
+                        pass
+            elif len(typed) < len(correct): # if the user typed less characters than the sentence
+                for i in range(len(correct)): 
+                    try: 
+                        if typed[i] == correct[i]: 
+                            self.correct_char.append(typed[i]) 
+                    except IndexError: 
+                        pass
 
-        end_time = time.time()
-
-        self.elapsed_time = (end_time-start_time) / 60
+        # this will calculate the elapsed time in minutes
+        self.elapsed_time = (end_time - start_time) / 60
+        # this will calculate the amount of characters the user typed correctly
         self.chars_count = sum(len(word) for word in self.correct_word)
-        self.words_count = self.chars_count / 5
-        self.wpm = round(self.words_count / self.elapsed_time)
+        words_count = self.chars_count / 5  # 5 is average word length
+        # this will calculate the WPM
+        self.wpm = round(words_count / self.elapsed_time)
 
-        self.total_char = sum(len(word) for word in typing_text)
-        self.acc = len(self.correct_char)/self.total_char
+        total_char = sum(len(word) for word in typed_sentence)
+        # this will calculate the total amount of characters the user typed
+        self.acc = (len(self.correct_char) / total_char)*100
+        # this will calculate the accuracy of the user
 
-        print(f'WPM: {self.wpm}')
-        print(f'ERROR: {self.wrong_words}')
-        print(f'ACC: {self.acc*100:.2f} %')
+    
+        return self.wpm, self.wrong_words, self.acc
 
-        return self.wpm
+    def reset(self):
+        self.wrong_words = 0
+        self.elapsed_time = 0
+        self.wpm = 0
+        self.correct_word = []
+        self.correct_char = []
+        self.list_speed = []
+        self.acc = 0
 
     @property
     def wpm(self):
         return self.__wpm
-    
+
     @wpm.setter
     def wpm(self, new_):
         self.__wpm = new_
-    
+
     @property
     def words_typed(self):
         return self.__words_typed
-    
+
     @words_typed.setter
     def words_typed(self, new_):
         self.__words_typed = new_
 
-    def add_speed(self, speed):
-        self.list_speed.append(speed)
+
+    
+    
+    
