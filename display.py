@@ -52,18 +52,9 @@ class Display:
         return name, color
 
 
-    def saving(self):
-
-        pass
-
-    def play_again(self):
-        pass
-
     def turtle_display(self, amount):
         '''This function will display the turtle screen.
-        amount: 1 for single player, more than 2 for multiplayer.
-        >>> display.turtle_display(1)
-        '''
+        amount: 1 for single player, more than 2 for multiplayer.'''
 
         data_dict = self.db.data()
         lst_name = [name for name in data_dict.keys()]
@@ -79,7 +70,7 @@ class Display:
         t.penup()
         t.goto(-100, 205)
         t.color("black")
-        t.write("PAT <3 PIMPLOY", font=("Arial", 20, "bold"))
+        t.write("Turtle Racing", font=("Arial", 20, "bold"))
         # DIRT
         t.goto(-350, 200)
         t.pendown()
@@ -161,7 +152,6 @@ class Display:
             player_2.penup()
             player_2.goto(-300, 0)
             player_2.pendown()
-        
 
             start = time.time()
             while player_1.xcor() <= 230 and player_2.xcor() <= 230:
@@ -282,7 +272,8 @@ class Display:
             player_4.pendown()
 
             start = time.time()
-            while player_1.xcor() <= 230 and player_2.xcor() <= 230 and player_3.xcor() <= 230 and player_4.xcor() <= 230:
+            while player_1.xcor() <= 230 and player_2.xcor() <= 230 and \
+                    player_3.xcor() <= 230 and player_4.xcor() <= 230:
                 player_1.forward(data_dict[lst_name[0]]['speed'])
                 player_2.forward(data_dict[lst_name[1]]['speed'])
                 player_3.forward(data_dict[lst_name[2]]['speed'])
@@ -290,16 +281,20 @@ class Display:
                 timer_text.clear()
                 timer_text.write(int(time.time() - start), font=("Courier", 30))
                 scr.update()
-            if player_1.xcor() > player_2.xcor() and player_1.xcor() > player_3.xcor() and player_1.xcor() > player_4.xcor():
+            if player_1.xcor() > player_2.xcor() and player_1.xcor() >\
+                    player_3.xcor() and player_1.xcor() > player_4.xcor():
                 os.system('clear')
                 print(f'{lst_name[0]} WIN!!!!')
-            elif player_2.xcor() > player_1.xcor() and player_2.xcor() > player_3.xcor and player_2.xcor() > player_4.xcor():
+            elif player_2.xcor() > player_1.xcor() and player_2.xcor() > \
+                    player_3.xcor() and player_2.xcor() > player_4.xcor():
                 os.system('clear')
                 print(f'{lst_name[1]} WIN!!!!')
-            elif player_3.xcor() > player_1.xcor() and player_3.xcor() > player_2.xcor() and player_3.xcor() > player_4.xcor():
+            elif player_3.xcor() > player_1.xcor() and player_3.xcor() > \
+                    player_2.xcor() and player_3.xcor() > player_4.xcor():
                 os.system('clear')
                 print(f'{lst_name[2]} WIN!!!!')
-            elif player_4.xcor() > player_1.xcor() and player_4.xcor() > player_2.xcor() and player_4.xcor() > player_3.xcor():
+            elif player_4.xcor() > player_1.xcor() and player_4.xcor() > \
+                    player_2.xcor() and player_4.xcor() > player_3.xcor():
                 os.system('clear')
                 print(f'{lst_name[3]} WIN!!!!')
             turtle.done()

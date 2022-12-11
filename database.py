@@ -1,12 +1,9 @@
 import json
 
-
 class DataBase:
 
     def insert(self, player): # insert new player
-        ''' Insert new player into database file players.json
-        >>> insert(turtle_player)
-        '''
+        ''' Insert new player into database file players.json'''
 
         new_data = {
             player.name: {
@@ -26,13 +23,7 @@ class DataBase:
                 json.dump(data, data_file, indent=4)
 
     def info_reset(self): # reset all player info
-        ''' Reset all player info in database file players.json 
-        to default value 0 
-        >>> info_reset()
-        Exiting.......
-        >>> info_reset()
-        No data file found
-        '''
+        ''' Reset all player info in database file players.json'''
     
         try:
             with open('players.json', 'r') as data_file:
@@ -46,11 +37,7 @@ class DataBase:
                 print('Exiting.......')
 
     def update_speed(self, name, speed): # update speed of player
-        ''' Update speed of player in database file players.json 
-        >>> update_speed(name, speed)
-        >>> update_speed('player1', 10)
-        >>> update_speed('player2', 20)
-        '''
+        ''' Update speed of player in database file players.json '''
 
         try:
             with open('players.json', 'r') as data_file:
@@ -63,11 +50,7 @@ class DataBase:
                 json.dump(data_dict, data_file, indent=4)
 
     def data(self):
-        ''' Return all data in database file players.json 
-        >>> data()
-        {'player1': {'color': 'red', 'speed': 10}, 
-        'player2': {'color': 'blue', 'speed': 20}}
-        '''
+        ''' Return all data in database file players.json '''
 
         try:
             with open('players.json', 'r') as data_file:
