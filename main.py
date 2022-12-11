@@ -2,7 +2,7 @@ import csv
 import os
 import time
 from random import randint
-
+from time import sleep
 from database import DataBase
 from display import Display
 from player import Players
@@ -27,7 +27,7 @@ while True:
         break
     elif choice == '1':
         display.single_mode()
-        level = input('Enter the level (or [back]): ')
+        level = input('Enter [1] to continue (or [back]): ')
         if level == 'back':
             os.system('clear')
             continue
@@ -37,9 +37,9 @@ while True:
             for i in range(int(level)):
                 name, color = display.single_lv()
                 Players(name, color, db)
-                for i in range(len(msg)):
-                    print(msg[i], end='')
-                    time.sleep(0.2)
+                for i in msg:
+                    sleep(0.1)
+                    print(i, end='', flush=True)
                 print()
                 wpm, error, acc = typ.WPM(sentence)
                 print(f'WPM: {wpm}')
@@ -66,9 +66,9 @@ while True:
             for i in range(int(amount)):
                 name, color = display.multi()
                 Players(name, color, db)
-                for i in range(len(msg)):
-                    print(msg[i], end='')
-                    time.sleep(0.2)
+                for i in msg:
+                    sleep(0.1)
+                    print(i, end='', flush=True)
                 print()
                 wpm, error, acc = typ.WPM(sentence)
                 print(f'WPM: {wpm}')
