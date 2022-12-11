@@ -4,6 +4,25 @@ import time
 
 
 class Typing:
+    '''This class will calculate the WPM of the user.
+
+    Attributes
+    ----------
+    wrong_words : int
+    This will count the wrong words of the user.
+    elapsed_time : float
+    This will count the elapsed time of the user.
+    wpm : int
+    This will count the WPM of the user.
+    correct_word : list
+    This will store the correct words of the user.
+    correct_char : list
+    This will store the correct characters of the user.
+    list_speed : list
+    This will store the WPM of the user.
+    acc : float
+    This will store the accuracy of the user.
+    '''
     def __init__(self):
         self.wrong_words = 0
         self.elapsed_time = 0

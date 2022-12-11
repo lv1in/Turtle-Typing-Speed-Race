@@ -116,7 +116,7 @@ class Display:
 
             # first player proceeds to racing track
             player_1.penup()
-            player_1.goto(-300, 100)
+            player_1.goto(-300, 0)
             player_1.pendown()
 
             start = time.time()

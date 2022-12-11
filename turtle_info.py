@@ -1,6 +1,9 @@
 
-class TurtlePlayer: # this class will create a turtle player
-    ''' This class will create a turtle player'''
+class TurtlePlayer:
+    '''This class is used to store information about the turtle player 
+    and the database information about the player in the database file players.json 
+    '''
+
     
     def __init__(self, *players):
         self.turtle_players = []

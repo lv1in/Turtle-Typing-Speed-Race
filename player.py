@@ -1,14 +1,14 @@
 
 
 class Players:
+    ''''''
 
     def __init__(self, name: str, turtle_color: str, db): 
-        ''''This function will initialize the turtle player.
-        >>> player1 = TurtlePlayer('player1', 'red')
-        >>> player1.name
-        'player1'
-        >>> player1.turtle_color
-        'red' '''
+        ''' Initialize player class  
+        :param name: name of player
+        :param turtle_color: color of turtle
+        :param db: database
+        '''
 
         self.speed = 0 # this is the speed of the turtle
         self.__name = name # this is the name of the player
