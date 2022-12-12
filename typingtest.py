@@ -24,13 +24,14 @@ class Typing:
     This will store the accuracy of the user.
     '''
     def __init__(self):
+        
         self.wrong_words = 0
         self.elapsed_time = 0
         self.wpm = 0
+        self.acc = 0
         self.correct_word = []
         self.correct_char = []
-        self.list_speed = []
-        self.acc = 0
+
             
     def WPM(self, sentence):
         '''This function will calculate the WPM of the user. 
@@ -115,10 +116,10 @@ class Typing:
         self.wrong_words = 0
         self.elapsed_time = 0
         self.wpm = 0
+        self.acc = 0
         self.correct_word = []
         self.correct_char = []
-        self.list_speed = []
-        self.acc = 0
+    
 
     @property
     def wpm(self):
