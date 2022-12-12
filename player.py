@@ -1,7 +1,7 @@
 
 
 class Players:
-    ''''''
+    ''' This class is for player information '''
 
     def __init__(self, name: str, turtle_color: str, db): 
         ''' Initialize player class  
