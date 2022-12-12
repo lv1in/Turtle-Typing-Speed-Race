@@ -1,6 +1,7 @@
 import json
 
 class DataBase:
+    ''' This class is used to store and retrieve data from database file players.json '''
 
     def insert(self, player): # insert new player
         ''' Insert new player into database file players.json'''

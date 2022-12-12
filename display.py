@@ -3,10 +3,11 @@ import time
 import turtle
 from turtle import *
 
-from turtle_info import TurtlePlayer
 
 
 class Display:
+    '''This class is used to display the intro screen, single player mode, multiplayer mode, 
+    single player , and the turtle screen. '''
     def __init__(self, db):
         self.dict_ = {}
         self.db = db
@@ -150,7 +151,7 @@ class Display:
 
             # second player proceeds to racing track
             player_2.penup()
-            player_2.goto(-300, 0)
+            player_2.goto(-300, -100)
             player_2.pendown()
 
             start = time.time()
@@ -180,7 +181,7 @@ class Display:
 
             # first player proceeds to racing track
             player_1.penup()
-            player_1.goto(-300, 200)
+            player_1.goto(-300, 100)
             player_1.pendown()
             # second player details
             player_2 = turtle.Turtle()
@@ -190,7 +191,7 @@ class Display:
 
           
             player_2.penup() # second player proceeds to racing track
-            player_2.goto(-300, 100)
+            player_2.goto(-300, 0)
             player_2.pendown()
 
 
@@ -202,7 +203,7 @@ class Display:
 
             
             player_3.penup() 
-            player_3.goto(-300, 0)
+            player_3.goto(-300, -100)
             player_3.pendown()
 
             start = time.time()
@@ -235,7 +236,7 @@ class Display:
 
             # first player proceeds to racing track
             player_1.penup()
-            player_1.goto(-300, 200)
+            player_1.goto(-300, 150)
             player_1.pendown()
 
             player_2 = turtle.Turtle()
@@ -245,7 +246,7 @@ class Display:
 
          
             player_2.penup()
-            player_2.goto(-300, 100)
+            player_2.goto(-300, 50)
             player_2.pendown()
 
 
@@ -257,7 +258,7 @@ class Display:
 
            
             player_3.penup()
-            player_3.goto(-300, 0)
+            player_3.goto(-300, -50)
             player_3.pendown()
 
             player_4 = turtle.Turtle()
@@ -268,7 +269,7 @@ class Display:
 
 
             player_4.penup()
-            player_4.goto(-300, -100)
+            player_4.goto(-300, -150)
             player_4.pendown()
 
             start = time.time()
